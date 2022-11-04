@@ -1,0 +1,11 @@
+# Date of the first creation: 2022-10-18
+#this filr is for EnergyPlus parametric simulation
+
+def run_one_parameter_parametiric(eplus_run_path, idf_path, output_dir, parametr_key, parameter vals): 
+
+
+"""
+
+"""
+
+return None # TO-DO!

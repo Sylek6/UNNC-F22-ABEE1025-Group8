@@ -1,5 +1,6 @@
 # Date of the first creation: 2022-10-18
 # This file is for EnergyPlus parametric simulation
+# Author: Yuanxin Yang
 import json
 from StaticEplusEngine import run_eplus_model, convert_json_idf
 
@@ -41,19 +42,22 @@ def run_one_simulation_helper(eplus_run_path, idf_path, output_dir,
 
 def run_one_parameter_parametric(eplus_run_path, idf_path, output_dir,
 	                             parameter_key, parameter_vals):
-	
-	output_paths = {}
+	# create a dictionary
+	output_paths = {}  
+	# create the result directory
 	import os.path
-	if not os.path.isdir(output_dir):
+	if not os.path.isdir(output_dir):  
 		os.mkdir(output_dir)
 
+	# write a for loop to run the simulation by the helper function for 25 times 
 	for i in range(len(parameter_vals)):
-		this_output_dir = output_dir + '/run_' + str(i + 1)
+		this_output_dir = output_dir + '/run_' + str(i + 1)  # the separate directories for each simulation
 		parameter_val = parameter_vals[i]
 		this_res_path = run_one_simulation_helper(eplus_run_path, idf_path, this_output_dir,
 	                             parameter_key, parameter_val)
-	
-		output_paths[parameter_val] = this_res_path
+		
+		# the result is in the form of the dictionary in order to draw the graph in next step
+		output_paths[parameter_val] = this_res_path  
 		
 	
 	return output_paths
