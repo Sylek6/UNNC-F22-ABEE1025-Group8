@@ -39,6 +39,8 @@ def run_one_simulation_helper(eplus_run_path, idf_path, output_dir,
 	######### step 6: run simulation #########
 	run_eplus_model(eplus_run_path, idf_path, output_dir)
 
+	return output_dir + './eplusout.csv'
+
 
 def run_one_parameter_parametric(eplus_run_path, idf_path, output_dir,
 	                             parameter_key, parameter_vals):
